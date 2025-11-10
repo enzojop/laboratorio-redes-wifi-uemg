@@ -1,0 +1,26 @@
+# Ignore OS / editor files
+.DS_Store
+Thumbs.db
+/.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# Docker / runtime
+server_logs/
+portal/logs/
+docker/portal/logs/
+
+# Captures (raw) and sensitive
+pcaps/raw_capture.pcap
+pcaps/*.pcap
+!pcaps/anon_capture.pcap
+
+# TLS private keys and certs (do not commit private keys)
+docker/https/certs/key.pem
+docker/https/certs/*.key
+docker/https/certs/*.pem
+
+# node / others
+node_modules/
