@@ -48,8 +48,8 @@ O objetivo é simular, em ambiente isolado, ataques e defesas em redes sem fio (
 1. Clone o repositório:
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
-cd <repositorio>/docker
+git clone https://github.com/enzojop/laboratorio-redes-wifi-uemg.git
+cd /docker/
 ```
 
 2. Verifique que os arquivos e pastas existem:
