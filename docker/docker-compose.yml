@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # 1) Servidor HTTP vulnerável (Python http.server)
+  server:
+    image: python:3.10-slim
+    container_name: vuln_server
+    # cria um index.html simples e serve pela porta 80 no container
+    command: python -m http.server 80 --directory /srv/www
+    ports:
+      - "8010:80"    # expõe a porta 80 do container em localhost:8010
+    volumes:
+      - ./server_www:/srv/www:ro
+      - ./server_logs:/var/log/server
+
+  # 2) Portal Nginx (servindo página de login customizada)
+  portal:
+    image: nginx:alpine
+    container_name: lab_portal
+    ports:
+      - "8011:80"    # acessível em http://localhost:8011
+    volumes:
+      - ./portal/html:/usr/share/nginx/html:ro
+      - ./portal/nginx.config:/etc/nginx/conf.d/default.conf:ro
+      - ./portal/logs:/var/log/nginx
+
+  # 3) HTTPS Nginx (usa certificado autoassinado em ./https/certs)
+  https:
+    image: nginx:alpine
+    container_name: lab_https
+    ports:
+      - "8443:443"   # acessível em https://localhost:8443
+    volumes:
+      - ./https/html:/usr/share/nginx/html:ro
+      - ./https/nginx.config:/etc/nginx/conf.d/default.conf:ro
+      - ./https/certs:/etc/nginx/certs:ro
+
+  # utilitário opcional para capturar pacotes (mantive como antes)
+  capture:
+    image: nicolaka/netshoot
+    container_name: lab_capture
+    command: sh -c "tshark -i any -f 'net 192.168.56.0/24' -w /pcaps/raw_capture.pcap"
+    volumes:
+      - ../pcaps:/pcaps
+
+# Observações:
+# - Os paths dos volumes são relativos à pasta que contém este docker-compose.yml (./docker)
+# - Garanta que as pastas ./portal/html, ./portal/logs, ./https/html e ./https/certs existam
+# - Os arquivos de configuração do Nginx estão em ./portal/nginx.config e ./https/nginx.config
