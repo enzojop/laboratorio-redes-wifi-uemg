@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Portal - Login</title>
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; background:#3f6478; color:#fff; display:flex; align-items:center; justify-content:center; height:100vh; margin:0 }
+      .box { background:#fff; color:#333; padding:30px; border-radius:6px; width:360px; box-shadow:0 6px 18px rgba(0,0,0,0.2) }
+      .logo { text-align:center; margin-bottom:12px }
+      input { width:100%; padding:8px 10px; margin:6px 0 12px 0 }
+      button { width:100%; padding:10px; background:#3f6478; color:#fff; border:none; border-radius:4px }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="logo"><h2>Portal - UEMG</h2></div>
+      <form action="/login" method="post">
+        <label>Matrícula / E-mail</label>
+        <input name="user" placeholder="Matrícula, CPF ou E-mail" required>
+        <label>Senha</label>
+        <input type="password" name="pass" placeholder="Senha" required>
+        <button>Entrar</button>
+      </form>
+    </div>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - UEMG</title>
+  <style>
+    /* Fundo geral */
+    body {
+      margin: 0;
+      font-family: "Roboto", sans-serif;
+      background-color: #3f6478;
+      display: flex;
+      flex-direction: column; /* empilha logo acima do formulário */
+      justify-content: center;
+      align-items: center;
+      gap: 0px;
+      min-height: 100vh;
+    }
+
+    /* Caixa principal */
+    .login-container {
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+    }
+
+    /* Logo e título */
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 150px;
+      margin-bottom: 10px;
+    }
+
+    .logo p {
+      font-size: 12px;
+      color: #ffffff;
+    }
+
+    /* Inputs */
+    .input-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d0d4d8;
+      border-radius: 4px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .input-group input:focus {
+      border-color: #3f6478;
+      box-shadow: 0 0 4px rgba(63,100,120,0.3);
+    }
+
+    /* Botão */
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #a6b5be;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #8da2af;
+    }
+
+    /* Esqueceu a senha */
+    .forgot-password {
+      margin-top: 10px;
+    }
+
+    .forgot-password a {
+      text-decoration: none;
+      color: #3f6478;
+      font-size: 13px;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+  .logo{
+    background-color: #3f6478;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 0; /* espaçamento agora controlado pelo gap do body */
+    text-align: center;
+  }
+  </style>
+</head>
+<body>
+
+    <div class="logo">
+      <img src="data:image/png;base64,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" alt="UEMG Logo">
+    </div>
+  <div class="login-container">
+    <form>
+      <div class="input-group">
+        <input type="text" placeholder="Matrícula, CPF, E-mail ou Responsável" required>
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Senha" required>
+      </div>
+      <button type="submit" class="btn">Entrar</button>
+      <div class="forgot-password">
+        <a href="#">Esqueceu a senha?</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
