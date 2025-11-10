@@ -1,4 +1,4 @@
-# Contribuindo para o Projeto
+# Contribuindo para o Projet
 
 ## Fluxo sugerido (4 membros)
 
