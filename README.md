@@ -173,5 +173,5 @@ Documente resultados com screenshots (Wireshark) e compare pcaps.
 
 - Enzo José Oliveira Pereira 
 - Nathan Massamb Belinato
-- Livya Carvalho
+- Livya Silva de Carvalho
 - Kayan Paiva
